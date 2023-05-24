@@ -31,8 +31,8 @@ class TrainsTableSeeder extends Seeder
             $newTrain->arriving_time = $faker->time();
             $newTrain->train_code = $faker->md5();
             $newTrain->carriages = $faker->numberBetween(6,20);
-            $newTrain->in_time = $trainCompany == 'Trenitalia' ? 'false' : $faker->boolean;
-            $newTrain->train_code == $rndmInt < 5 ? $faker->boolean : false;
+            $newTrain->in_time = $trainCompany == 'Trenitalia' ? 0 : $faker->boolean;
+            $newTrain->train_code = $rndmInt < 5 ? $faker->boolean : false;
             $newTrain->date = $faker->date;
         }
     }
