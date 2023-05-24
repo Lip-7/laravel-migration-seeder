@@ -16,14 +16,14 @@ class TrainsTableSeeder extends Seeder
     public function run(Faker $faker): void
     {
         $trains = config('trains_db');
-        for ($i = 0; $i > 20; $i++ ) {
+        for ($i = 0; $i < 20; $i++ ) {
             $trainCompany = $trains['companies'][random_int(0, (count($trains['companies']) - 1))];
             $trainStation = $trains['stations'][random_int(0, (count($trains['stations']) - 1))];
             $rndmInt = random_int(0, 10);
             do {
                 $trainStation2 = $trains['stations'][random_int(0, (count($trains['stations']) - 1))];
             } while ($trainStation == $trainStation2);
-            $newTrain = new Train;
+            $newTrain = new Train();
             $newTrain->company = $trainCompany;
             $newTrain->leaving_station = $trainStation;
             $newTrain->arriving_station = $trainStation;
@@ -31,9 +31,10 @@ class TrainsTableSeeder extends Seeder
             $newTrain->arriving_time = $faker->time();
             $newTrain->train_code = $faker->md5();
             $newTrain->carriages = $faker->numberBetween(6,20);
-            $newTrain->in_time = $trainCompany == 'Trenitalia' ? 0 : $faker->boolean;
-            $newTrain->train_code = $rndmInt < 5 ? $faker->boolean : false;
-            $newTrain->date = $faker->date;
+            $newTrain->in_time = $trainCompany == 'Trenitalia' ? 0 : $faker->boolean();
+            $newTrain->deleted = $rndmInt < 5 ? $faker->boolean() : false;
+            $newTrain->date = $faker->date();
+            $newTrain->save();
         }
     }
 }

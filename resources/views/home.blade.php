@@ -1,8 +1,5 @@
 <?php
-$trains = config('trains_db');
-//dd($data);
-$trainCompany = $trains['companies'][random_int(0, (count($trains['companies']) - 1))];
-dd($trainCompany);
+
 ?>
 
 @extends('layouts.app')
