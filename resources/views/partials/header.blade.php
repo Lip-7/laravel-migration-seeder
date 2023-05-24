@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                    <a class="nav-link @if(request()->is('/')) {{'active'}}@endif" aria-current="page" href="{{route('home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('today')}}">Today Trains</a>
+                    <a class="nav-link @if(request()->is('*today')) {{'active'}}@endif" href="{{route('today')}}">Today Trains</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
