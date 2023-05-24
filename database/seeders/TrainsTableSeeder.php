@@ -26,13 +26,17 @@ class TrainsTableSeeder extends Seeder
             $newTrain = new Train();
             $newTrain->company = $trainCompany;
             $newTrain->leaving_station = $trainStation;
-            $newTrain->arriving_station = $trainStation;
+            $newTrain->arriving_station = $trainStation2;
             $newTrain->leaving_time = $faker->time();
             $newTrain->arriving_time = $faker->time();
             $newTrain->train_code = $faker->md5();
             $newTrain->carriages = $faker->numberBetween(6,20);
-            $newTrain->in_time = $trainCompany == 'Trenitalia' ? 0 : $faker->boolean();
             $newTrain->deleted = $rndmInt < 5 ? $faker->boolean() : false;
+            if ($newTrain->deleted == true) {
+                $newTrain->in_time = 2;
+            }else {
+                $newTrain->in_time = $trainCompany == 'Trenitalia' ? 0 : $faker->boolean();
+            }
             $newTrain->date = $faker->date();
             $newTrain->save();
         }
