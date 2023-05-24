@@ -37,7 +37,7 @@ class TrainsTableSeeder extends Seeder
             }else {
                 $newTrain->in_time = $trainCompany == 'Trenitalia' ? 0 : $faker->boolean();
             }
-            $newTrain->date = $faker->date();
+            $newTrain->date = $faker->dateTimeInInterval('-2 week', '+2 week');
             $newTrain->save();
         }
     }
